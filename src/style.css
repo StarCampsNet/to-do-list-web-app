@@ -34,6 +34,14 @@ body {
     font-size: 16px;
 }
 
+.input-section select {
+    margin-left: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
 .input-section button {
     padding: 8px 12px;
     margin-left: 5px;
@@ -65,6 +73,20 @@ body {
 
 #task-list li:last-child {
     border-bottom: none;
+}
+
+/* Priority styles */
+.low {
+    color: green;
+}
+
+.medium {
+    color: orange;
+}
+
+.high {
+    color: red;
+    font-weight: bold;
 }
 
 /* Completed task styles */

@@ -18,17 +18,17 @@ function saveTasksToLocalStorage(tasks) {
 function renderTasks() {
     const tasks = getTasksFromLocalStorage();
 
-    tasks.forEach((taskText) => {
-        const listItem = createTaskElement(taskText);
+    tasks.forEach(({ text, priority }) => {
+        const listItem = createTaskElement(text, priority);
         taskList.appendChild(listItem);
     });
 }
 
 // Create a task DOM element
-function createTaskElement(taskText) {
+function createTaskElement(taskText, priority) {
     const listItem = document.createElement('li');
     listItem.innerHTML = `
-        <span class="task-text">${taskText}</span>
+        <span class="task-text ${priority}">${taskText}</span>
         <button class="delete-btn">X</button>
     `;
 
@@ -51,6 +51,7 @@ function createTaskElement(taskText) {
 // Add a new task
 function addTask() {
     const taskText = taskInput.value.trim();
+    const priority = document.getElementById('priority-select').value;
 
     if (taskText === '') {
         alert('Please enter a task!');
@@ -58,12 +59,12 @@ function addTask() {
     }
 
     // Create a new task element and add it to the list
-    const listItem = createTaskElement(taskText);
+    const listItem = createTaskElement(taskText, priority);
     taskList.appendChild(listItem);
 
     // Save the new task to Local Storage
     const tasks = getTasksFromLocalStorage();
-    tasks.push(taskText);
+    tasks.push({ text: taskText, priority });
     saveTasksToLocalStorage(tasks);
 
     // Clear the input field
@@ -73,7 +74,7 @@ function addTask() {
 // Delete a task from Local Storage
 function deleteTaskFromLocalStorage(taskText) {
     const tasks = getTasksFromLocalStorage();
-    const updatedTasks = tasks.filter((task) => task !== taskText);
+    const updatedTasks = tasks.filter((task) => task.text !== taskText);
     saveTasksToLocalStorage(updatedTasks);
 }
 
