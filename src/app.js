@@ -28,9 +28,15 @@ function renderTasks() {
 function createTaskElement(taskText) {
     const listItem = document.createElement('li');
     listItem.innerHTML = `
-        <span>${taskText}</span>
+        <span class="task-text">${taskText}</span>
         <button class="delete-btn">X</button>
     `;
+
+    // Add event listener to toggle task completion
+    const taskTextElement = listItem.querySelector('.task-text');
+    taskTextElement.addEventListener('click', () => {
+        taskTextElement.classList.toggle('completed');
+    });
 
     // Add event listener to the delete button
     const deleteBtn = listItem.querySelector('.delete-btn');

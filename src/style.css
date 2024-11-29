@@ -67,7 +67,14 @@ body {
     border-bottom: none;
 }
 
-#task-list .delete-btn {
+/* Completed task styles */
+.task-text.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Delete Button */
+.delete-btn {
     color: red;
     cursor: pointer;
     font-weight: bold;
