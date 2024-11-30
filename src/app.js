@@ -86,6 +86,19 @@ taskInput.addEventListener('keypress', (e) => {
     }
 });
 
+// Clear all tasks
+function clearAllTasks() {
+    // Clear the task list in the DOM
+    taskList.innerHTML = '';
+
+    // Clear the tasks in Local Storage
+    localStorage.removeItem('tasks');
+}
+
+// Add event listener to the "Clear All" button
+const clearAllBtn = document.getElementById('clear-all-btn');
+clearAllBtn.addEventListener('click', clearAllTasks);
+
 // Load tasks when the page loads
 document.addEventListener('DOMContentLoaded', renderTasks);
 
